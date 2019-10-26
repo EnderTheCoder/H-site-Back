@@ -9,6 +9,7 @@ if (!$conn) {
 }
 if(!emptyCheck($_POST['username']) ||
     !emptyCheck($_POST['password']) ||
+    !emptyCheck($_POST['captcha']) ||
     $_SESSION['captcha'] != $_POST['captcha'])
     stdJqReturn($conn, FALSE);
 $username = addslashes(sprintf("%s",$_POST['username']));
