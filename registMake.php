@@ -3,7 +3,6 @@ header('Access-Control-Allow-Origin:*');
 header('Content-Type:application/json; charset=utf-8');
 require "./core/mysqlCore.php";
 require "./core/customFunctions.php";
-echo 'b';
 $conn = mysqliConnect();
 if(!$conn){
     die("mysql error!");
