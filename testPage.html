@@ -5,6 +5,13 @@
     <title>Page for testing APIs</title>
 </head>
 <body>
+<div>你没有登录</div>
+<form action="loginMake.php" method="post">
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <input type="text" name="captcha">
+    <input type="submit">
+</form>
 <img src="captcha.php" onclick="this.src='captcha.php'" title="点击更换" width="500px"/>
 </body>
 </html>

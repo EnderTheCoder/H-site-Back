@@ -19,14 +19,15 @@ function registCheck($conn, $username, $password, $regDate, $email) {
 function getPasswordByUsername($conn, $username) {
     $stmt = $conn->prepare("SELECT password FROM userInf where username = ?");
     $stmt->bind_param('s', $username);
-    $result = $stmt->execute();
-    if(!$result) return FALSE;
-    $row = $result->fetch_assoc();
-    return $row['password'];
+    $password = '';
+    $stmt->bind_result($password);
+    $stmt->execute();
+    $stmt->fetch();
+    return $password;
 }
 
 function updateLoginInf($conn, $username, $lastLoginIP, $lastLoginDate) {
-    $stmt = $conn->prepare("UPDATE userInf SET lastLoginIP = '?', lastLoginDate = '?' WHERE username = '?'");
+    $stmt = $conn->prepare("UPDATE userInf SET lastLoginIP = ?, lastLoginDate = ? WHERE username = ?");
     $stmt->bind_param('sss', $lastLoginIP, $lastLoginDate, $username);
     return $stmt->execute();
 }
